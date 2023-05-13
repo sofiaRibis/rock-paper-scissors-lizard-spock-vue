@@ -1,0 +1,14 @@
+:root {
+	font-size: 16px;
+	font-family: $base-font;
+	color: $base-color;
+}
+
+h1 {
+	font-size: $font-size-headings;
+	font-family: $heading-font;
+
+	.accent {
+		color: $accent-color;
+	}
+}
