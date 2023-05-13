@@ -27,14 +27,10 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 main {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	padding-block: 6rem;
 }
-
 .start-game-button {
 	position: relative;
 
