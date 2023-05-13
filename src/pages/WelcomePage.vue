@@ -33,6 +33,8 @@ main {
 }
 .start-game-button {
 	position: relative;
+	width: fit-content;
+	margin: 0 auto;
 
 	button {
 		position: absolute;
