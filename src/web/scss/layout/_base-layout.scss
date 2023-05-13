@@ -1,6 +1,6 @@
 body {
 	height: 100vh;
-	padding: $padding-block-xl $padding-inline;
+	padding-inline: $padding-inline;
 	background-image: url(../../assets/atom.svg);
 	@include background(center, 45rem auto, no-repeat);
 }
