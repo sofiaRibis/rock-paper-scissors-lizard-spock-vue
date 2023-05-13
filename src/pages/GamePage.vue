@@ -48,6 +48,44 @@ export default {
 			}
 		};
 
+		const resultsList = {
+			"👊": {
+				"👊": "draw",
+				"🖐️": "loss",
+				"✌️": "win",
+				"🐍": "win",
+				"🖖": "loss",
+			},
+			"🖐️": {
+				"👊": "win",
+				"🖐️": "draw",
+				"✌️": "loss",
+				"🐍": "loss",
+				"🖖": "win",
+			},
+			"✌️": {
+				"👊": "loss",
+				"🖐️": "win",
+				"✌️": "draw",
+				"🐍": "win",
+				"🖖": "loss",
+			},
+			"🐍": {
+				"👊": "loss",
+				"🖐️": "win",
+				"✌️": "loss",
+				"🐍": "draw",
+				"🖖": "win",
+			},
+			"🖖": {
+				"👊": "win",
+				"🖐️": "loss",
+				"✌️": "win",
+				"🐍": "loss",
+				"🖖": "draw",
+			},
+		};
+
 		const pcChoice = () => {
 			const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 
@@ -56,22 +94,33 @@ export default {
 			pcMove.value = choice;
 
 			choiceValues(choice, pcMove);
-
-			console.log(pcMove.value);
 		};
 
 		const playerChoice = (move) => {
 			choiceValues(move, playerMove);
+		};
 
-			console.log(playerMove.value);
+		const results = () => {
+			const player = playerMove.value;
+			const pc = pcMove.value;
+			const result = resultsList[player][pc];
+
+			if (result === "win") {
+				console.log("You won!");
+			} else if (result === "loss") {
+				console.log("You lost!");
+			} else {
+				console.log("It's a draw.");
+			}
 		};
 
 		const game = (move) => {
 			playerChoice(move);
 
-			setTimeout(() => {
-				pcChoice();
-			}, 2000);
+			pcChoice();
+
+			results();
+			setTimeout(() => {}, 2000);
 		};
 
 		return {
@@ -83,6 +132,8 @@ export default {
 			pcMove,
 			game,
 			choiceValues,
+			resultsList,
+			results,
 		};
 	},
 };
