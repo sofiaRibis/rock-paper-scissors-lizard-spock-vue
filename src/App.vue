@@ -1,9 +1,13 @@
 <template lang="">
-	<div></div>
+	<router-view />
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang=""></style>
+<style lang="scss">
+#app {
+	height: -webkit-fill-available;
+}
+</style>
