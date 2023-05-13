@@ -1,0 +1,76 @@
+<template lang="">
+	<div class="game-board">
+		<p v-if="nameTop" class="heading computerPlayer">{{ nameTop }}</p>
+
+		<div class="game-board__moves">
+			<button @click="rockChoice" class="heading rock">👊</button>
+			<button @click="paperChoice" class="heading paper">🖐</button>
+			<button @click="scissorsChoice" class="heading scissors">✌</button>
+			<button @click="lizardChoice" class="heading lizard">🐍</button>
+			<button @click="spockChoice" class="heading spock">🖖</button>
+		</div>
+
+		<p v-if="nameBottom" class="heading accent personPlayer">
+			{{ nameBottom }}
+		</p>
+	</div>
+</template>
+
+<script>
+export default {
+	props: ["name-top", "name-bottom"],
+
+	emits: ["get-choice"],
+
+	setup(props, context) {
+		const rockChoice = () => {
+			context.emit("get-choice", "rock");
+		};
+
+		const paperChoice = () => {
+			context.emit("get-choice", "paper");
+		};
+
+		const scissorsChoice = () => {
+			context.emit("get-choice", "scissors");
+		};
+
+		const lizardChoice = () => {
+			context.emit("get-choice", "lizard");
+		};
+
+		const spockChoice = () => {
+			context.emit("get-choice", "spock");
+		};
+
+		return {
+			rockChoice,
+			paperChoice,
+			scissorsChoice,
+			lizardChoice,
+			spockChoice,
+		};
+	},
+};
+</script>
+
+<style lang="scss">
+.game-board {
+	text-align: center;
+
+	.computerPlayer {
+		padding-bottom: 1.5rem;
+	}
+
+	.personPlayer {
+		padding-top: 1.5rem;
+	}
+
+	&__moves {
+		max-width: 600px;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 auto;
+	}
+}
+</style>
