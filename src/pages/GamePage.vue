@@ -9,15 +9,23 @@
 		<div class="heading choices">{{ playerMove }}</div>
 
 		<GameBoardVue :name-bottom="playerName" @get-choice="game" />
+
+		<FinishModal
+			v-if="isResult"
+			:game-end-value="gameEndValue"
+			@restart-game="restartGame"
+		/>
 	</main>
 </template>
 
 <script>
 import GameBoardVue from "@/components/GameBoard.vue";
+import FinishModal from "@/components/FinishModal.vue";
 import { ref } from "vue";
 export default {
 	components: {
 		GameBoardVue,
+		FinishModal,
 	},
 
 	setup() {
@@ -25,6 +33,8 @@ export default {
 		const playerName = ref("you");
 		const playerMove = ref("");
 		const pcMove = ref("");
+		const isResult = ref(false);
+		const gameEndValue = ref("");
 
 		const choiceValues = (string, valueOfMove) => {
 			if (string === "rock") {
@@ -106,12 +116,16 @@ export default {
 			const result = resultsList[player][pc];
 
 			if (result === "win") {
-				console.log("You won!");
+				gameEndValue.value = "win";
 			} else if (result === "loss") {
-				console.log("You lost!");
+				gameEndValue.value = "loss";
 			} else {
-				console.log("It's a draw.");
+				gameEndValue.value = "drow";
 			}
+
+			setTimeout(() => {
+				isResult.value = true;
+			}, 1000);
 		};
 
 		const game = (move) => {
@@ -119,8 +133,15 @@ export default {
 
 			pcChoice();
 
-			results();
-			setTimeout(() => {}, 2000);
+			setTimeout(() => {
+				results();
+			}, 1000);
+		};
+
+		const restartGame = () => {
+			isResult.value = false;
+			pcMove.value = "";
+			playerMove.value = "";
 		};
 
 		return {
@@ -134,6 +155,9 @@ export default {
 			choiceValues,
 			resultsList,
 			results,
+			isResult,
+			gameEndValue,
+			restartGame,
 		};
 	},
 };

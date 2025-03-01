@@ -3,11 +3,12 @@
 		<p v-if="nameTop" class="heading computerPlayer">{{ nameTop }}</p>
 
 		<div class="game-board__moves">
-			<button @click="rockChoice" class="heading rock">👊</button>
-			<button @click="paperChoice" class="heading paper">🖐</button>
-			<button @click="scissorsChoice" class="heading scissors">✌</button>
-			<button @click="lizardChoice" class="heading lizard">🐍</button>
-			<button @click="spockChoice" class="heading spock">🖖</button>
+			<!-- @pointerup instead of @click to avoid pressing Enter to change a move -->
+			<button @pointerup="rockChoice" class="heading rock">👊</button>
+			<button @pointerup="paperChoice" class="heading paper">🖐</button>
+			<button @pointerup="scissorsChoice" class="heading scissors">✌️</button>
+			<button @pointerup="lizardChoice" class="heading lizard">🐍</button>
+			<button @pointerup="spockChoice" class="heading spock">🖖</button>
 		</div>
 
 		<p v-if="nameBottom" class="heading accent personPlayer">
@@ -57,6 +58,7 @@ export default {
 <style lang="scss">
 .game-board {
 	text-align: center;
+	position: relative;
 
 	.computerPlayer {
 		padding-bottom: 1.5rem;
