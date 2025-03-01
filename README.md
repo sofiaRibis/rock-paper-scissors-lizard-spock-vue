@@ -1,4 +1,5 @@
 # rock-paper-scissors-lizard-spock-vue
+This project was created primarily as a learning experience to explore Vue and to experiment a bit with Figma for the design aspect
 
 ## Project setup
 ```
@@ -22,3 +23,4 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
